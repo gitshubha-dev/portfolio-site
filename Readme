@@ -1,0 +1,50 @@
+Cloud Portfolio Website (AWS)
+
+Deployed a fully functional static portfolio website using Amazon S3 for storage and Amazon CloudFront for global content delivery over HTTPS. Implemented secure access control using Origin Access Control (OAC), ensuring the S3 bucket remains private while being served through CloudFront.
+
+🔧 What I built
+Hosted static website files on Amazon S3
+Configured Amazon CloudFront as a CDN for fast global delivery
+Enabled HTTPS using CloudFront default SSL certificate
+Secured S3 bucket using Origin Access Control (no public access)
+Configured correct bucket permissions and policies for secure access
+Set up proper index document routing for single-page navigation
+
+🧩 Problems I solved
+Fixed PermanentRedirect errors caused by incorrect S3 region endpoints
+Resolved CloudFront origin misconfiguration issues
+Debugged missing or incorrect index.html routing behavior
+Learned difference between S3 website endpoint vs REST endpoint
+Understood how CloudFront interacts with regional S3 buckets
+
+🧠 Key learnings
+Amazon S3 is object storage, not a traditional web server
+CloudFront acts as a secure global delivery layer for static websites
+Origin Access Control (OAC) is required for secure production setups
+Region mismatch in S3 endpoints causes redirect errors
+Static website hosting can be replaced by CloudFront in modern architectures
+
+🚀 Outcome
+Successfully deployed a secure, production-style static website architecture using AWS best practices with CDN-backed delivery and private storage.
+
+Architecture Diagram:
+
+The website is hosted using a secure cloud architecture where Amazon S3 stores static assets privately, and Amazon CloudFront serves the content globally via HTTPS. Access to S3 is restricted using Origin Access Control (OAC), ensuring that all traffic flows through CloudFront.
+
+                 ┌──────────────────────┐
+                 │      User Browser    │
+                 └─────────┬────────────┘
+                           │ HTTPS
+                           v
+              ┌──────────────────────────┐
+              │  Amazon CloudFront CDN   │
+              │  (Global Edge Network)   │
+              └─────────┬────────────────┘
+                        │ OAC (secure access)
+                        v
+        ┌────────────────────────────────────┐
+        │   Amazon S3 (Private Bucket)       │
+        │   - index.html                     │
+        │   - CSS / assets                   │
+        └────────────────────────────────────┘
+
